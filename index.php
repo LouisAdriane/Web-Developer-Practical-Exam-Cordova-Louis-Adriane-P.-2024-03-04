@@ -53,26 +53,24 @@
         </thead>
         <tbody>
             <?php
-            // Database connection
+            // Database 
             $servername = "localhost";
             $username = "root";
             $password = "";
             $dbname = "car_db";
             
-            // Create connection
             $conn = new mysqli($servername, $username, $password, $dbname);
             
-            // Check connection
+       
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }
             
-            // Fetch data from database
             $sql = "SELECT plate_number, current_color, target_color FROM paint_jobs";
             $result = $conn->query($sql);
             
             if ($result->num_rows > 0) {
-                // Output data of each row
+             
                 while($row = $result->fetch_assoc()) {
                     echo "<tr>";
                     echo "<td>" . $row["plate_number"] . "</td>";
