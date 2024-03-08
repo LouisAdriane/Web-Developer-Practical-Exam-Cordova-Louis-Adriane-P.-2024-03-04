@@ -9,18 +9,24 @@
 </head>
 
 <body>
+    <div class="main-title"><b>JUAN'S AUTO PAINT</b></div>
+    <ul id="nav">
+        <li><a href="index.php">NEW PAINT JOB</a></li>
+        <li><a href="paintjobs.php">PAINT JOBS</a></li>
+
+    </ul>
 
     <div id="newPaintJobPage" class="page">
-        <h1 align="center">NEW PAINT JOB</h1>
+        <h1 align="center">New Paint Job</h1>
         <div id="carImages">
-            <img id="leftCar" src="img/graycar.png" alt="Left Car">
+            <img id="leftCar" src="img/default.png" alt="Left Car">
             <img id="arrow" src="img/grayarrow.png" alt="Arrow" style="width: 10%; margin-bottom: 4%;">
-            <img id="rightCar" src="img/graycar.png" alt="Right Car">
+            <img id="rightCar" src="img/default.png" alt="Right Car">
         </div>
     </div>
 
     <form id="paintJobForm" action="submit.php" method="post">
-        <h2>Car details</h2>
+        <h2>Car Details</h2>
         <label for="plateNumber">Plate No:</label>
         <input type="text" id="plateNumber" name="plateNumber">
         <label for="currentColor">Current Color:</label>
@@ -42,51 +48,7 @@
         <br>
         <button type="submit">Submit</button>
     </form>
-    <h2 align="center">Paint Queue</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Plate Number</th>
-                <th>Current Color</th>
-                <th>Target Color</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Database connection
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "car_db";
-            
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-            
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            
-            // Fetch data from database
-            $sql = "SELECT plate_number, current_color, target_color FROM paint_jobs";
-            $result = $conn->query($sql);
-            
-            if ($result->num_rows > 0) {
-                // Output data of each row
-                while($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["plate_number"] . "</td>";
-                    echo "<td>" . $row["current_color"] . "</td>";
-                    echo "<td>" . $row["target_color"] . "</td>";
-                    echo "</tr>";
-                }
-            } else {
-                echo "<tr><td colspan='3'>No paint jobs found</td></tr>";
-            }
-            $conn->close();
-            ?>
-        </tbody>
-    </table>
+
     <script src="js/script.js"></script>
 </body>
 

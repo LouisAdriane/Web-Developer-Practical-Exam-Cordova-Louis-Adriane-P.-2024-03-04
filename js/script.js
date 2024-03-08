@@ -7,17 +7,17 @@ document.addEventListener("DOMContentLoaded", function() {
     // Function to change car color
     function changeCarColor(car, color) {
         switch (color) {
-            case "gray":
-                car.src = `img/graycar.png`;
+            case "default":
+                car.src = `img/default.png`;
                 break;
             case "red":
-                car.src = `img/redcar.png`;
+                car.src = `img/red.png`;
                 break;
             case "green":
-                car.src = `img/greencar.png`;
+                car.src = `img/green.png`;
                 break;
             case "blue":
-                car.src = `img/bluecar.png`;
+                car.src = `img/blue.png`;
                 break;
             default:
                 break;
